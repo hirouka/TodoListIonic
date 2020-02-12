@@ -10,6 +10,9 @@ export class TodoslistService {
 
   private todolistCollection: AngularFirestoreCollection<List>;
   private todos: Observable<Array<List>>;
+  // tslint:disable-next-line:no-shadowed-variable
+  public listtodos: Array<List>;
+
   constructor(private db: AngularFirestore) {
     this.todolistCollection = db.collection<List>('todos');
     this.todos = this.todolistCollection.snapshotChanges().pipe(
@@ -20,16 +23,21 @@ export class TodoslistService {
             return { id, ...data };
           });
         }));
+    this.todos.subscribe(res => {
+      this.listtodos = res;
+
+    });
   }
 
-  public get(): Observable<Array<List>> {
-    return this.todos;
+  public get(): Array<List> {
+    return this.listtodos;
   }
-  public delete(list: List) {
+
+  public delete(list: List ) {
     return this.todolistCollection.doc(list.id).delete();
   }
 
-  add(item: Item) {
+add(item: Item) {
     return this.todolistCollection.add(item);
   }
 

@@ -1,7 +1,10 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-    La liste des tâches
+  <ion-toolbar color="primary">
+    <ion-title >
+    Tâches
+       <!--{{a}}-->
+      <ion-button color="primary tint" float-right (click)="logOut()"><ion-icon name="log-out"></ion-icon></ion-button>
+
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,7 +16,7 @@
     </ion-label>
   </ion-item>
     <ion-list>
-      <ion-item-sliding *ngFor="let item of list; let i = index">
+      <ion-item-sliding *ngFor="let item of getList(); let i = index">
         <ion-item>
           <ion-label>
             <h2> {{ item?.title}}</h2>
@@ -28,6 +31,13 @@
       </ion-item-sliding>
     </ion-list>
   <section>
-  <ion-button expand="forward" [routerDirection]="['root']"  [routerLink]="['/addtodo']">Add a New Item</ion-button>
+
+
   </section>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button float-right primary large expand="forward" [routerDirection]="['root']"  [routerLink]="['/addtodo']"> <ion-icon name="add-circle"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-footer>

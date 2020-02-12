@@ -17,7 +17,14 @@ import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {TodoslistService} from './services/todoslist.service';
+import {AuthentPage} from './authent/authent.page';
+import * as firebase from 'firebase';
+import {AuthService} from './auth.service';
+import {ReactiveFormsModule} from '@angular/forms';
+import {AuthGuard} from './services/auth.gaurd';
+import {Facebook} from '@ionic-native/facebook/ngx';
 
+firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,11 +35,14 @@ import {TodoslistService} from './services/todoslist.service';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-    AngularFireStorageModule],
+    AngularFireStorageModule, ReactiveFormsModule],
   providers: [
     StatusBar,
     SplashScreen,
     TodoslistService,
+    AuthService,
+      AuthGuard,
+    Facebook,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

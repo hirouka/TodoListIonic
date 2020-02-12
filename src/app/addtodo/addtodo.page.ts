@@ -21,6 +21,9 @@ export class AddtodoPage implements OnInit {
   addList() {
     const item = { title: this.title } as Item;
     this.listService.add(item);
-    this.router.navigate(['']);
+    this.router.navigate(['/todoslist']);
+  }
+  retourPagetodo() {
+    window.history.back();
   }
 }
