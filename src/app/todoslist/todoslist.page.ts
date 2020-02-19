@@ -13,22 +13,30 @@ import {FormGroup} from '@angular/forms';
 })
 export class TodoslistPage implements OnInit {
   a: string;
-  validationsform: FormGroup;
+  navigate: any;
+
+    validationsform: FormGroup;
   errorMessage = '';
   public list: Array<List> = new Array<List>();
+  public Listtodos: any;
   // tslint:disable-next-line:no-shadowed-variable
   constructor(private listService: TodoslistService, private authservice: AuthService,  private navCtrl: NavController
   ) {
     this.a = this.authservice.a;
+    this.Listtodos = this.listService.get();
+
+
+
   }
 
   ngOnInit(): void {
+      console.log(this.listService.get());
+      this.Listtodos = this.listService.get();
   }
-
     getList() {
         return this.listService.get();
     }
-  logOut(){
+  logOut() {
     this.authservice.logoutUser()
         .then(res => {
           this.authservice.authenticated = false;
@@ -43,8 +51,8 @@ export class TodoslistPage implements OnInit {
   }
   delete(pos: number) {
     // tslint:disable-next-line:no-shadowed-variable
-    this.listService.delete(this.list[pos]);
-    this.listService.get();
+      this.listService.delete(this.getList()[pos]);
+      this.listService.get();
   }
 }
 

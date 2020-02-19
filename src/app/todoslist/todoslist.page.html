@@ -1,9 +1,9 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="tertiary">
     <ion-title >
     Tâches
        <!--{{a}}-->
-      <ion-button color="primary tint" float-right (click)="logOut()"><ion-icon name="log-out"></ion-icon></ion-button>
+      <ion-button color="primary"  float-right (click)="logOut()"><ion-icon name="log-out"></ion-icon></ion-button>
 
     </ion-title>
   </ion-toolbar>
@@ -20,6 +20,8 @@
         <ion-item>
           <ion-label>
             <h2> {{ item?.title}}</h2>
+            <h2> {{ item?.items}}</h2>
+            <h2> {{ item?.id}}</h2>
           </ion-label>
         </ion-item>
 

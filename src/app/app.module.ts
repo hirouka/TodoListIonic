@@ -41,7 +41,7 @@ firebase.initializeApp(environment.firebase);
     SplashScreen,
     TodoslistService,
     AuthService,
-      AuthGuard,
+    AuthGuard,
     Facebook,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

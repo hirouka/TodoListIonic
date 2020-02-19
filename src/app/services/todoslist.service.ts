@@ -23,22 +23,65 @@ export class TodoslistService {
             return { id, ...data };
           });
         }));
-    this.todos.subscribe(res => {
+/*    this.todos.subscribe(res => {
       this.listtodos = res;
 
-    });
+    });*/
   }
 
-  public get(): Array<List> {
-    return this.listtodos;
+  /**
+   * renvoie une liste de todoList
+   */
+  public get(): Observable< Array<List>> {
+    return this.todos;
   }
 
-  public delete(list: List ) {
+  /**
+   * Supprime une list passée en parametre
+   * @param list
+   */
+  public delete(list: List) {
+    console.log('supp');
+    console.log(list);
     return this.todolistCollection.doc(list.id).delete();
   }
 
-add(item: Item) {
+  /**
+   * ajoute une liste
+   * @param list
+   */
+  addList(list : List){
+    return this.todolistCollection.add(list);
+
+  }
+
+  /**
+   * Ajoute un item dans ???
+   * @param item
+   */
+  addItem(item: Item) {
     return this.todolistCollection.add(item);
   }
+
+
+  /**
+   *
+   * @param list
+   */
+  getItems(list: List) {
+    return list.items;
+  }
+
+  /**
+   *
+   * @param list
+   */
+/*
+  getItem(id:number): Observable<Item> {
+    return this.getItems()
+        .map(items => items.find(item => item.id === id));
+  }
+*/
+
 
 }

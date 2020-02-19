@@ -41,6 +41,8 @@ export class RegisterPage implements OnInit {
         Validators.minLength(5),
         Validators.required
       ])),
+      firstName: ['', Validators.compose([Validators.maxLength(50), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      lastName: ['', Validators.compose([Validators.maxLength(50), Validators.pattern('[a-zA-Z ]*'), Validators.required])]
     });
   }
 

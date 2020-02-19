@@ -106,12 +106,12 @@ export class AuthentPage implements OnInit {
     this.navCtrl.navigateForward('/register');
   }
 
-    loginwithgoogle() {
+  loginwithgoogle() {
         this.gooleprovider  = new auth.GoogleAuthProvider();
         this.authService.authenticated = false;
         this.afAuth.auth.signInWithPopup(this.gooleprovider).then((r) => { this.authService.authenticated = true;
-                                                                           this.navCtrl.navigateForward('/todoslist'); }
-                );
+                                                                           this.navCtrl.navigateForward('/todoslist');
+        });
 
     }
 
